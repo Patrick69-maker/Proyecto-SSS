@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práctica de Estilos SSS</title>
+    <style>
+        /* Estilo general para el cuerpo */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9; /* Fondo suave */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        /* Estilo para el contenedor principal */
+        .container {
+            width: 80%;
+            max-width: 1000px;
+            margin-top: 20px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Estilo para el encabezado */
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        /* Estilo de los formularios */
+        .formulario input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .formulario button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .formulario button:hover {
+            background-color: #45a049;
+        }
+
+        /* Estilo de las tablas */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Formulario para ingresar nombre, contraseña y correo -->
+        <div class="formulario">
+            <h1>Formulario de Ingreso a una practica</h1>
+            <form id="formularioIngreso">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" placeholder="Ingresa tu nombre" required><br>
+
+                <label for="password">Contraseña:</label>
+                <input type="password" id="password" placeholder="Ingresa tu contraseña" required><br>
+
+                <label for="correo">Correo:</label>
+                <input type="email" id="correo" placeholder="Ingresa tu correo" required><br>
+
+                <button type="submit">Agregar</button>
+            </form>
+        </div>
+
+        <!-- Lista de datos -->
+        <h1>Lista de Datos</h1>
+        <table id="tablaDatos">
+            <tr>
+                <th>Nombre</th>
+                <th>Contraseña</th>
+                <th>Correo</th>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        // Obtener elementos del formulario y la tabla
+        const formulario = document.getElementById("formularioIngreso");
+        const tabla = document.getElementById("tablaDatos");
+
+        // Evento para agregar datos a la tabla cuando el formulario se envíe
+        formulario.addEventListener("submit", function(event) {
+            event.preventDefault(); // Evita el envío del formulario
+
+            // Obtener los valores del formulario
+            const nombre = document.getElementById("nombre").value;
+            const password = document.getElementById("password").value;
+            const correo = document.getElementById("correo").value;
+
+            // Crear una nueva fila en la tabla
+            const nuevaFila = document.createElement("tr");
+
+            // Crear las celdas para la nueva fila
+            const celdaNombre = document.createElement("td");
+            celdaNombre.textContent = nombre;
+
+            const celdaPassword = document.createElement("td");
+            celdaPassword.textContent = password;
+
+            const celdaCorreo = document.createElement("td");
+            celdaCorreo.textContent = correo;
+
+            // Agregar las celdas a la fila
+            nuevaFila.appendChild(celdaNombre);
+            nuevaFila.appendChild(celdaPassword);
+            nuevaFila.appendChild(celdaCorreo);
+
+            // Agregar la fila a la tabla
+            tabla.appendChild(nuevaFila);
+
+            // Limpiar el formulario después de agregar los datos
+            formulario.reset();
+        });
+    </script>
+
+</body>
+</html>
